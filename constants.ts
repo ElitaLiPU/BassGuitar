@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
     price: 850,
     description: 'An optical compressor designed specifically for low-frequency instruments. Smooth, musical compression that tightens your low end.',
     features: ['Optical Gain Reduction Element', 'Ratio, Attack, Release controls', 'True Bypass', 'Internal High Voltage Scaling'],
-    image: 'https://github.com/ElitaLiPU/BassGuitar/blob/main/components/Compress.jpeg?raw=true', // Pedal detail
+    image: 'https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/main/components/Compress.jpeg?raw=true', // Pedal detail
     inStock: true,
   },
   {
