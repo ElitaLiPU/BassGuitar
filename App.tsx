@@ -235,7 +235,7 @@ const App: React.FC = () => {
               Handcrafted tube amplification and instruments for the discerning musician.
             </p>
             <p className="text-gray-600 text-xs">
-              © 2024 Vulkan Audio. All rights reserved.
+              © 2025 Vulkan Audio. All rights reserved.
             </p>
           </div>
           
