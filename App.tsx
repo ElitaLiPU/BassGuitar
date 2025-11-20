@@ -49,7 +49,7 @@ const App: React.FC = () => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="./media/Preamp.jpeg" 
+            src="https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png?token=GHSAT0AAAAAADPWGTHGOOUSYJ7IVPVUV5FQ2I7LBTA" 
             alt="Vulkan Tube Preamp" 
             className="w-full h-full object-cover opacity-50 grayscale contrast-125"
           />
@@ -103,11 +103,11 @@ const App: React.FC = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
         <div className="relative h-[50vh] md:h-auto bg-brand-gray overflow-hidden group">
         <img 
-          src='https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png?token=GHSAT0AAAAAADPWGTHGOOUSYJ7IVPVUV5FQ2I7LBTA',
-          alt='Tubes',
+          src='https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png?token=GHSAT0AAAAAADPWGTHGOOUSYJ7IVPVUV5FQ2I7LBTA'
+          alt='Tubes'
           className="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-110"
         />
-           <div className="absolute inset-0 bg-black/10" />
+           {/* <div className="absolute inset-0 bg-black/10" /> */}
         </div>
         <div className="flex items-center justify-center p-12 md:p-24 bg-white">
           <div className="max-w-md space-y-6">
