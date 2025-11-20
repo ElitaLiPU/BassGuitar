@@ -3,7 +3,7 @@ import { Product } from './types';
 export const PRODUCTS: Product[] = [
   {
     id: '1',
-    name: 'Vulkan Tube Preamp DI',
+    name: 'Luminoso Tube Preamp DI',
     category: 'Preamp',
     price: 1050,
     description: 'The flagship all-tube preamplifier. Features two vacuum tubes for high voltage rail operation, delivering unrivaled headroom and 3D harmonic content.',
@@ -13,7 +13,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '2',
-    name: 'Vulkan 4-String Classic',
+    name: 'Luminoso 4-String Classic',
     category: 'Bass',
     price: 3200,
     description: 'A handcrafted masterpiece featuring a roasted alder body, quartersawn maple neck, and our custom-wound split-coil pickup.',
