@@ -109,7 +109,7 @@ const App: React.FC = () => {
             playsInline
             className="w-full h-full object-cover grayscale contrast-125 opacity-90"
           >
-            <source src="./media/VaccumTube.mp4" type="video/mp4" />
+            <source src="https://github.com/ElitaLiPU/BassGuitar/raw/refs/heads/main/components/VaccumTube.mp4" type="video/mp4" />
           </video>
            <div className="absolute inset-0 bg-black/10" />
         </div>
