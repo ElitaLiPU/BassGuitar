@@ -67,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, currentView, onChange
             className="z-50 relative group"
           >
             <h1 className={`font-serif text-2xl md:text-3xl font-bold tracking-tighter transition-colors ${navColorClass}`}>
-              VULKAN
+              LUMINOSO
             </h1>
           </button>
         </div>
