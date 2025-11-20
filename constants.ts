@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
     price: 3200,
     description: 'A handcrafted masterpiece featuring a roasted alder body, quartersawn maple neck, and our custom-wound split-coil pickup.',
     features: ['Roasted Alder Body', 'Indian Rosewood Fretboard', 'Custom Hand-Wound Pickup', 'Hipshot Hardware'],
-    image: 'https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png', // Bass guitar detail
+    image: 'https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/BassGuitar.jpeg', // Bass guitar detail
     inStock: true,
   },
   {
@@ -38,7 +38,7 @@ export const PRODUCTS: Product[] = [
     price: 45,
     description: 'Hand-soldered patch cables using Mogami oxygen-free copper wire and gold-plated connectors.',
     features: ['Mogami 2524 Wire', 'Gold Plated Plugs', 'Double Shielding', 'Lifetime Warranty'],
-    image: 'https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png', // Cable coil
+    image: 'https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/Strings.jpeg', // Cable coil
     inStock: true,
   },
 ];
