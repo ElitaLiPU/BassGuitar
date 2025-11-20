@@ -253,8 +253,8 @@ const App: React.FC = () => {
               <h3 className="text-white uppercase tracking-widest text-xs font-bold mb-8">Company</h3>
               <ul className="space-y-4 text-sm text-gray-400">
                 <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setCurrentView(ViewState.ABOUT)}>About Us</li>
-                <li className="hover:text-white cursor-pointer transition-colors">Dealers</li>
-                <li className="hover:text-white cursor-pointer transition-colors">Contact</li>
+                {/* <li className="hover:text-white cursor-pointer transition-colors">Dealers</li>
+                <li className="hover:text-white cursor-pointer transition-colors">Contact</li> */}
               </ul>
             </div>
             
