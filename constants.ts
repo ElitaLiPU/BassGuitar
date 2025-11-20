@@ -8,7 +8,7 @@ export const PRODUCTS: Product[] = [
     price: 1050,
     description: 'The flagship all-tube preamplifier. Features two vacuum tubes for high voltage rail operation, delivering unrivaled headroom and 3D harmonic content.',
     features: ['2x 12AX7 Vacuum Tubes', 'Jensen DI Transformer', 'Bass & Treble Baxandall EQ', 'Low Cut Filter'],
-    image: '../media/Preamp.jpeg', // Silver audio faceplate
+    image: './components/Preamp.jpeg', // Silver audio faceplate
     inStock: true,
   },
   {
@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
     price: 3200,
     description: 'A handcrafted masterpiece featuring a roasted alder body, quartersawn maple neck, and our custom-wound split-coil pickup.',
     features: ['Roasted Alder Body', 'Indian Rosewood Fretboard', 'Custom Hand-Wound Pickup', 'Hipshot Hardware'],
-    image: '../media/bassguitar.jpeg', // Bass guitar detail
+    image: './components/bassguitar.jpeg', // Bass guitar detail
     inStock: true,
   },
   {
@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
     price: 850,
     description: 'An optical compressor designed specifically for low-frequency instruments. Smooth, musical compression that tightens your low end.',
     features: ['Optical Gain Reduction Element', 'Ratio, Attack, Release controls', 'True Bypass', 'Internal High Voltage Scaling'],
-    image: '../media/Compress.jpeg', // Pedal detail
+    image: './components/Compress.jpeg', // Pedal detail
     inStock: true,
   },
   {
@@ -38,7 +38,7 @@ export const PRODUCTS: Product[] = [
     price: 45,
     description: 'Hand-soldered patch cables using Mogami oxygen-free copper wire and gold-plated connectors.',
     features: ['Mogami 2524 Wire', 'Gold Plated Plugs', 'Double Shielding', 'Lifetime Warranty'],
-    image: '../media/String.jpeg', // Cable coil
+    image: './components/String.jpeg', // Cable coil
     inStock: true,
   },
 ];
