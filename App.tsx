@@ -49,7 +49,7 @@ const App: React.FC = () => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png?token=GHSAT0AAAAAADPWGTHGOOUSYJ7IVPVUV5FQ2I7LBTA" 
+            src="https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png" 
             alt="Vulkan Tube Preamp" 
             className="w-full h-full object-cover opacity-50 grayscale contrast-125"
           />
@@ -103,7 +103,7 @@ const App: React.FC = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
         <div className="relative h-[50vh] md:h-auto bg-brand-gray overflow-hidden group">
         <img 
-          src='https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png?token=GHSAT0AAAAAADPWGTHGOOUSYJ7IVPVUV5FQ2I7LBTA'
+          src='https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png'
           alt='Tubes'
           className="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-110"
         />
@@ -195,7 +195,7 @@ const App: React.FC = () => {
             </p>
           </div>
           <div className="relative aspect-[4/5] bg-gray-100">
-             <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" alt="Workshop" className="w-full h-full object-cover grayscale contrast-125" />
+             <img src="https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png" alt="Workshop" className="w-full h-full object-cover grayscale contrast-125" />
           </div>
         </div>
       </div>
