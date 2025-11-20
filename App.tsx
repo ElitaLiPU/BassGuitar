@@ -60,7 +60,7 @@ const App: React.FC = () => {
         <div className={`relative z-10 max-w-5xl px-6 text-center space-y-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="space-y-4">
             <h2 className="text-brand-gold text-xs md:text-sm font-medium tracking-[0.4em] uppercase">
-              Handcrafted in Portland, OR
+              Handcrafted for World-Class Guitarists
             </h2>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-normal tracking-tight leading-[1.1]">
               Analog Tone <br />
