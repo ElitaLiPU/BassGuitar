@@ -49,11 +49,11 @@ const App: React.FC = () => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1550985543-f47f38aeee65?q=80&w=2535&auto=format&fit=crop" 
+            src="./media/Preamp.jpeg" 
             alt="Vulkan Tube Preamp" 
-            className="w-full h-full object-cover opacity-60 grayscale contrast-125"
+            className="w-full h-full object-cover opacity-50 grayscale contrast-125"
           />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 bg-noise opacity-20" />
         </div>
 
@@ -102,11 +102,16 @@ const App: React.FC = () => {
       {/* Product Highlight - The Preamp */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
         <div className="relative h-[50vh] md:h-auto bg-brand-gray overflow-hidden group">
-           <img 
-            src="https://images.unsplash.com/photo-1626630726731-33f9d284eb4f?q=80&w=2574&auto=format&fit=crop" 
-            alt="Vacuum Tubes" 
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale contrast-125"
-          />
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover grayscale contrast-125 opacity-90"
+          >
+            <source src="./media/VaccumTube.mp4" type="video/mp4" />
+          </video>
+           <div className="absolute inset-0 bg-black/10" />
         </div>
         <div className="flex items-center justify-center p-12 md:p-24 bg-white">
           <div className="max-w-md space-y-6">
@@ -187,14 +192,14 @@ const App: React.FC = () => {
               <strong className="font-medium text-brand-black">Vulkan Audio</strong> exists in the space between vintage soul and modern reliability. We got tired of "good enough" tone. We got tired of gear that failed on the road.
             </p>
             <p>
-              Our workshop in Portland is small by design. We don't have an assembly line. We have workbenches. We have soldering irons. We have oscilloscopes.
+              Our workshop is small by design. We don't have an assembly line. We have workbenches. We have soldering irons. We have oscilloscopes.
             </p>
             <p>
               When you order a Vulkan preamp or bass, you aren't just buying a product; you are commissioning a piece of musical equipment built specifically to help you find your voice.
             </p>
           </div>
           <div className="relative aspect-[4/5] bg-gray-100">
-             <img src="https://images.unsplash.com/photo-1555656407-436f910e74d6?q=80&w=2671&auto=format&fit=crop" alt="Workshop" className="w-full h-full object-cover grayscale contrast-125" />
+             <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" alt="Workshop" className="w-full h-full object-cover grayscale contrast-125" />
           </div>
         </div>
       </div>

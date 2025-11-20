@@ -15,15 +15,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
         <img 
           src={product.image} 
           alt={product.name} 
-          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 grayscale contrast-110"
+          className="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-110"
         />
         {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <Button 
             variant="secondary" 
             onClick={() => onAddToCart(product)}
             disabled={!product.inStock}
-            className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+            className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg"
           >
             {product.inStock ? 'Add to Cart' : 'Out of Stock'}
           </Button>
