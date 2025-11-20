@@ -99,7 +99,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Product Highlight - The Preamp */}
+      {/* Product Highlight - The Tubes */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
         <div className="relative h-[50vh] md:h-auto bg-brand-gray overflow-hidden group">
         <img 
