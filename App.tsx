@@ -50,7 +50,7 @@ const App: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://raw.githubusercontent.com/ElitaLiPU/BassGuitar/refs/heads/main/components/VaccumTube.png" 
-            alt="Vulkan Tube Preamp" 
+            alt="Luminoso Tube Preamp" 
             className="w-full h-full object-cover opacity-50 grayscale contrast-125"
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -88,7 +88,7 @@ const App: React.FC = () => {
           </h3>
           <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
           <p className="text-gray-600 leading-relaxed font-light text-lg max-w-2xl mx-auto">
-            Vulkan Audio was founded on a simple premise: high voltage vacuum tube circuits deliver a dynamic response that digital modeling cannot replicate. Every unit is hand-wired, point-to-point, ensuring your signal remains pure from the first note to the last.
+            Luminoso Audio was founded on a simple premise: high voltage vacuum tube circuits deliver a dynamic response that digital modeling cannot replicate. Every unit is hand-wired, point-to-point, ensuring your signal remains pure from the first note to the last.
           </p>
           <button 
             onClick={() => setCurrentView(ViewState.ABOUT)}
@@ -112,7 +112,7 @@ const App: React.FC = () => {
         <div className="flex items-center justify-center p-12 md:p-24 bg-white">
           <div className="max-w-md space-y-6">
             <h4 className="text-brand-gold uppercase tracking-widest text-xs font-bold">The Flagship</h4>
-            <h2 className="font-serif text-4xl text-brand-black">Vulkan Tube Preamp DI</h2>
+            <h2 className="font-serif text-4xl text-brand-black">Luminoso Tube Preamp DI</h2>
             <p className="text-gray-600 leading-relaxed">
               The heart of your rig. Two 12AX7 tubes running at true 300V plate voltage provide massive headroom and 3D harmonic richness. It features a Jensen DI transformer for studio-grade balanced output.
             </p>
