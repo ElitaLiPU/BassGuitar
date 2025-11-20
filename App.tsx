@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { ProductCard } from './components/ProductCard';
 import { Button } from './components/Button';
@@ -6,12 +6,17 @@ import { ToneConcierge } from './components/ToneConcierge';
 import { CartDrawer } from './components/CartDrawer';
 import { PRODUCTS } from './constants';
 import { ViewState, CartItem, Product } from './types';
-import { ArrowRight, Settings, Music, Radio } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>(ViewState.HOME);
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const addToCart = (product: Product) => {
     setCartItems(prev => {
@@ -40,115 +45,128 @@ const App: React.FC = () => {
   const renderHome = () => (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-dark">
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-brand-black text-white">
+        {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          {/* Use a dark, moody image of tubes or a bass */}
           <img 
-            src="https://picsum.photos/id/146/1920/1080" 
-            alt="Background" 
-            className="w-full h-full object-cover opacity-40 grayscale"
+            src="https://images.unsplash.com/photo-1550985543-f47f38aeee65?q=80&w=2535&auto=format&fit=crop" 
+            alt="Vulkan Tube Preamp" 
+            className="w-full h-full object-cover opacity-60 grayscale contrast-125"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-black/50" />
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-noise opacity-20" />
         </div>
 
-        <div className="relative z-10 max-w-4xl px-6 text-center space-y-8">
-          <h2 className="text-brand-gold text-sm tracking-[0.3em] uppercase animate-in fade-in slide-in-from-bottom-4 duration-700">
-            Est. 2024
-          </h2>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-tight tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
-            Pure Tone. <br />
-            <span className="italic text-gray-400">Handcrafted.</span>
-          </h1>
-          <div className="pt-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+        <div className={`relative z-10 max-w-5xl px-6 text-center space-y-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="space-y-4">
+            <h2 className="text-brand-gold text-xs md:text-sm font-medium tracking-[0.4em] uppercase">
+              Handcrafted in Portland, OR
+            </h2>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-normal tracking-tight leading-[1.1]">
+              Analog Tone <br />
+              <span className="italic font-light text-gray-300">Redefined.</span>
+            </h1>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-4">
             <Button 
-              variant="outline" 
-              className="text-white border-white hover:bg-white hover:text-black px-12 py-4"
+              variant="secondary" 
+              className="min-w-[200px]"
               onClick={() => setCurrentView(ViewState.SHOP)}
             >
-              Enter Shop
+              View Collection
             </Button>
           </div>
         </div>
-        
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
-          <ArrowRight className="rotate-90" />
+      </section>
+
+      {/* Philosophy Section */}
+      <section className="py-32 bg-brand-offwhite px-6 relative overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center space-y-8">
+          <h3 className="font-serif text-3xl md:text-4xl text-brand-black leading-tight">
+            "We build gear for the player who understands that tone is not just heard, but felt."
+          </h3>
+          <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
+          <p className="text-gray-600 leading-relaxed font-light text-lg max-w-2xl mx-auto">
+            Vulkan Audio was founded on a simple premise: high voltage vacuum tube circuits deliver a dynamic response that digital modeling cannot replicate. Every unit is hand-wired, point-to-point, ensuring your signal remains pure from the first note to the last.
+          </p>
+          <button 
+            onClick={() => setCurrentView(ViewState.ABOUT)}
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-black hover:text-brand-gold transition-colors mt-8 border-b border-transparent hover:border-brand-gold pb-1"
+          >
+            Our Story <ArrowRight size={14} />
+          </button>
         </div>
       </section>
 
-      {/* Features / Value Prop */}
+      {/* Product Highlight - The Preamp */}
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
+        <div className="relative h-[50vh] md:h-auto bg-brand-gray overflow-hidden group">
+           <img 
+            src="https://images.unsplash.com/photo-1626630726731-33f9d284eb4f?q=80&w=2574&auto=format&fit=crop" 
+            alt="Vacuum Tubes" 
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale contrast-125"
+          />
+        </div>
+        <div className="flex items-center justify-center p-12 md:p-24 bg-white">
+          <div className="max-w-md space-y-6">
+            <h4 className="text-brand-gold uppercase tracking-widest text-xs font-bold">The Flagship</h4>
+            <h2 className="font-serif text-4xl text-brand-black">Vulkan Tube Preamp DI</h2>
+            <p className="text-gray-600 leading-relaxed">
+              The heart of your rig. Two 12AX7 tubes running at true 300V plate voltage provide massive headroom and 3D harmonic richness. It features a Jensen DI transformer for studio-grade balanced output.
+            </p>
+            <ul className="space-y-2 pt-4 pb-6">
+              <li className="flex items-center gap-3 text-sm text-gray-700">
+                <div className="w-1 h-1 bg-brand-black rounded-full" />
+                Independent Gain & Master Volume
+              </li>
+              <li className="flex items-center gap-3 text-sm text-gray-700">
+                <div className="w-1 h-1 bg-brand-black rounded-full" />
+                Baxandall Bass & Treble EQ
+              </li>
+              <li className="flex items-center gap-3 text-sm text-gray-700">
+                <div className="w-1 h-1 bg-brand-black rounded-full" />
+                Switchable Low Cut (80Hz)
+              </li>
+            </ul>
+            <Button variant="outline" onClick={() => addToCart(PRODUCTS[0])}>
+              Add to Signal Chain — ${PRODUCTS[0].price}
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Grid Preview */}
       <section className="py-32 bg-white px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
-          <div className="space-y-4">
-            <Settings className="w-10 h-10 text-brand-gold mx-auto md:mx-0" strokeWidth={1} />
-            <h3 className="font-serif text-2xl text-brand-black">High Voltage</h3>
-            <p className="text-gray-600 leading-relaxed text-sm">
-              Unlike solid-state emulators, our preamps run on true high-voltage rails, delivering the headroom and harmonic richness of a full tube stack in a portable format.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <Music className="w-10 h-10 text-brand-gold mx-auto md:mx-0" strokeWidth={1} />
-            <h3 className="font-serif text-2xl text-brand-black">Studio Grade</h3>
-            <p className="text-gray-600 leading-relaxed text-sm">
-              Equipped with custom-wound Jensen transformers, our DIs provide a noise-free, balanced signal ready for the world's finest recording consoles.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <Radio className="w-10 h-10 text-brand-gold mx-auto md:mx-0" strokeWidth={1} />
-            <h3 className="font-serif text-2xl text-brand-black">Built to Tour</h3>
-            <p className="text-gray-600 leading-relaxed text-sm">
-              Hand-wired point-to-point construction housed in aircraft-grade aluminum. Designed to withstand the rigors of international touring.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Products Teaser */}
-      <section className="py-32 bg-gray-50 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-12">
-            <h2 className="text-4xl font-serif text-brand-black">Latest Creations</h2>
-            <button 
-              onClick={() => setCurrentView(ViewState.SHOP)}
-              className="text-sm uppercase tracking-widest border-b border-brand-black pb-1 hover:text-brand-gold hover:border-brand-gold transition-colors"
-            >
-              View All
-            </button>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+              <h2 className="text-4xl font-serif text-brand-black mb-4">The Collection</h2>
+              <p className="text-gray-500 max-w-md">Tools for the working professional. Built to last a lifetime.</p>
+            </div>
+            <Button variant="ghost" onClick={() => setCurrentView(ViewState.SHOP)} className="group">
+              View All Products <ChevronRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {PRODUCTS.slice(0, 3).map(product => (
               <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
             ))}
           </div>
         </div>
       </section>
-
-      {/* Artist Quote / Image Break */}
-      <section className="relative py-40 px-6 bg-brand-black overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <img src="https://picsum.photos/id/348/1920/800" className="w-full h-full object-cover grayscale" alt="Stage" />
-        </div>
-        <div className="relative z-10 max-w-3xl mx-auto text-center space-y-8">
-          <p className="text-2xl md:text-4xl font-serif italic text-white leading-normal">
-            "The Vulkan Preamp has become the central nervous system of my pedalboard. It's the sound I've heard in my head for 20 years."
-          </p>
-          <p className="text-brand-gold uppercase tracking-widest text-sm font-medium">
-            — Marcus Miller (Fictional Endorsement)
-          </p>
-        </div>
-      </section>
     </>
   );
 
   const renderShop = () => (
-    <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
-      <h2 className="text-5xl font-serif text-brand-black mb-4">The Shop</h2>
-      <p className="text-gray-500 mb-12 max-w-xl">
-        Every instrument and amplifier is built by hand in our small workshop. 
-        Please allow 4-6 weeks for delivery on backordered items.
-      </p>
+    <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen animate-in fade-in duration-500">
+      <div className="text-center mb-20 space-y-4">
+        <h2 className="text-5xl md:text-6xl font-serif text-brand-black">Shop</h2>
+        <p className="text-gray-500 text-sm uppercase tracking-widest">Quality over Quantity</p>
+      </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20">
         {PRODUCTS.map(product => (
           <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
         ))}
@@ -157,28 +175,34 @@ const App: React.FC = () => {
   );
 
   const renderAbout = () => (
-    <div className="pt-32 pb-20 px-6 max-w-4xl mx-auto min-h-screen text-center md:text-left">
-      <h2 className="text-5xl font-serif text-brand-black mb-12">Our Philosophy</h2>
-      
-      <div className="space-y-8 text-lg text-gray-700 leading-relaxed">
-        <p>
-          <span className="font-serif text-2xl italic text-brand-black">Vulkan Audio</span> was born from a frustration with modern, sterilized bass tone. We believe that the electric bass is an instrument that demands weight, texture, and dynamic response—qualities that are often lost in digital modeling and mass-produced solid-state gear.
-        </p>
-        <p>
-          Founded in 2024 by a small team of engineers and session musicians, we set out to recreate the signal paths of the legendary tube consoles of the 1960s, but packaged for the modern touring musician.
-        </p>
-        <div className="my-12 relative h-[400px] bg-gray-200">
-          <img src="https://picsum.photos/id/25/1200/800" alt="Workshop" className="w-full h-full object-cover grayscale" />
+    <div className="pt-32 pb-20 px-6 min-h-screen animate-in fade-in duration-500">
+      <div className="max-w-4xl mx-auto text-center md:text-left">
+        <h2 className="text-5xl md:text-7xl font-serif text-brand-black mb-16 leading-none">
+          Pursuing <br />Perfection.
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-light">
+            <p>
+              <strong className="font-medium text-brand-black">Vulkan Audio</strong> exists in the space between vintage soul and modern reliability. We got tired of "good enough" tone. We got tired of gear that failed on the road.
+            </p>
+            <p>
+              Our workshop in Portland is small by design. We don't have an assembly line. We have workbenches. We have soldering irons. We have oscilloscopes.
+            </p>
+            <p>
+              When you order a Vulkan preamp or bass, you aren't just buying a product; you are commissioning a piece of musical equipment built specifically to help you find your voice.
+            </p>
+          </div>
+          <div className="relative aspect-[4/5] bg-gray-100">
+             <img src="https://images.unsplash.com/photo-1555656407-436f910e74d6?q=80&w=2671&auto=format&fit=crop" alt="Workshop" className="w-full h-full object-cover grayscale contrast-125" />
+          </div>
         </div>
-        <p>
-          Every solder joint is made by hand. Every tube is tested for microphonics. Every bass is set up to perfection before it leaves our bench. We don't just build gear; we build the foundation of your sound.
-        </p>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-brand-white selection:bg-brand-gold selection:text-white font-sans">
+    <div className="min-h-screen bg-white selection:bg-brand-black selection:text-white font-sans antialiased">
       <Navbar 
         cartItems={cartItems} 
         currentView={currentView} 
@@ -202,41 +226,47 @@ const App: React.FC = () => {
 
       <ToneConcierge />
 
-      <footer className="bg-brand-black text-white py-20 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="space-y-6">
-            <h2 className="font-serif text-2xl">VULKAN.</h2>
-            <p className="text-gray-400 text-sm">
-              Handcrafted in Portland, Oregon.<br />
-              Est. 2024
+      <footer className="bg-brand-black text-white py-24 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+          <div className="space-y-8 max-w-xs">
+            <h2 className="font-serif text-3xl tracking-tight">VULKAN.</h2>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Handcrafted tube amplification and instruments for the discerning musician.
+            </p>
+            <p className="text-gray-600 text-xs">
+              © 2024 Vulkan Audio. All rights reserved.
             </p>
           </div>
           
-          <div>
-            <h3 className="text-brand-gold uppercase tracking-widest text-xs font-bold mb-6">Shop</h3>
-            <ul className="space-y-4 text-sm text-gray-400">
-              <li className="hover:text-white cursor-pointer">Preamps</li>
-              <li className="hover:text-white cursor-pointer">Basses</li>
-              <li className="hover:text-white cursor-pointer">Accessories</li>
-              <li className="hover:text-white cursor-pointer">Gift Cards</li>
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-16">
+            <div>
+              <h3 className="text-white uppercase tracking-widest text-xs font-bold mb-8">Explore</h3>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setCurrentView(ViewState.SHOP)}>Preamp DI</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setCurrentView(ViewState.SHOP)}>Basses</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setCurrentView(ViewState.SHOP)}>Accessories</li>
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="text-brand-gold uppercase tracking-widest text-xs font-bold mb-6">Support</h3>
-            <ul className="space-y-4 text-sm text-gray-400">
-              <li className="hover:text-white cursor-pointer">Manuals</li>
-              <li className="hover:text-white cursor-pointer">Warranty</li>
-              <li className="hover:text-white cursor-pointer">Dealers</li>
-              <li className="hover:text-white cursor-pointer">Contact</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-brand-gold uppercase tracking-widest text-xs font-bold mb-6">Newsletter</h3>
-            <div className="flex border-b border-gray-700 pb-2">
-              <input type="email" placeholder="Enter your email" className="bg-transparent border-none outline-none text-sm w-full text-white placeholder-gray-600" />
-              <button className="text-brand-gold uppercase text-xs font-bold hover:text-white">Join</button>
+            <div>
+              <h3 className="text-white uppercase tracking-widest text-xs font-bold mb-8">Company</h3>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setCurrentView(ViewState.ABOUT)}>About Us</li>
+                <li className="hover:text-white cursor-pointer transition-colors">Dealers</li>
+                <li className="hover:text-white cursor-pointer transition-colors">Contact</li>
+              </ul>
+            </div>
+            
+            <div className="col-span-2 md:col-span-1">
+              <h3 className="text-white uppercase tracking-widest text-xs font-bold mb-8">Stay Connected</h3>
+               <div className="flex flex-col gap-4">
+                  <input 
+                    type="email" 
+                    placeholder="Email Address" 
+                    className="bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-white/30 transition-colors"
+                  />
+                  <Button variant="secondary" className="w-full">Subscribe</Button>
+               </div>
             </div>
           </div>
         </div>

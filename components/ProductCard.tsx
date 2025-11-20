@@ -10,57 +10,42 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   return (
-    <div className="group relative flex flex-col bg-white overflow-hidden">
-      <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
+    <div className="group relative flex flex-col">
+      <div className="relative aspect-[4/5] overflow-hidden bg-gray-100 mb-6">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
+          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 grayscale contrast-110"
         />
-        <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/5" />
+        {/* Overlay on hover */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <Button 
+            variant="secondary" 
+            onClick={() => onAddToCart(product)}
+            disabled={!product.inStock}
+            className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+          >
+            {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+          </Button>
+        </div>
         
         {!product.inStock && (
-          <div className="absolute top-4 right-4 bg-brand-black text-white text-xs px-2 py-1 uppercase tracking-widest">
+          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-black text-[10px] font-bold px-3 py-1 uppercase tracking-widest border border-gray-200">
             Sold Out
           </div>
         )}
       </div>
       
-      <div className="flex flex-col flex-1 p-6 space-y-4">
-        <div className="flex justify-between items-start">
-          <div>
-            <h3 className="text-lg font-serif font-medium text-brand-black">
-              {product.name}
-            </h3>
-            <p className="mt-1 text-xs text-gray-500 uppercase tracking-wider">
-              {product.category}
-            </p>
-          </div>
-          <p className="text-sm font-medium text-brand-black">
-            ${product.price.toLocaleString()}
-          </p>
-        </div>
-        
-        <p className="text-sm text-gray-600 line-clamp-2">
-          {product.description}
+      <div className="text-center space-y-2">
+        <p className="text-xs text-gray-500 uppercase tracking-[0.2em] font-medium">
+          {product.category}
         </p>
-
-        <div className="mt-auto pt-4">
-          <Button 
-            variant="outline" 
-            fullWidth 
-            onClick={() => onAddToCart(product)}
-            disabled={!product.inStock}
-            className="flex items-center gap-2"
-          >
-            {product.inStock ? (
-              <>
-                <span>Add to Cart</span>
-                <Plus size={16} />
-              </>
-            ) : 'Join Waitlist'}
-          </Button>
-        </div>
+        <h3 className="text-xl font-serif text-brand-black group-hover:text-gray-600 transition-colors">
+          {product.name}
+        </h3>
+        <p className="text-sm font-medium text-gray-900">
+          ${product.price.toLocaleString()}
+        </p>
       </div>
     </div>
   );

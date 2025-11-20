@@ -17,11 +17,21 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, currentView, onChange
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const getNavColor = () => {
+    if (mobileMenuOpen) return 'text-brand-black';
+    if (scrolled) return 'text-brand-black';
+    if (currentView === ViewState.HOME) return 'text-white';
+    return 'text-brand-black';
+  };
+
+  const navColorClass = getNavColor();
+  const bgClass = scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6';
 
   const navLinks = [
     { label: 'Shop', view: ViewState.SHOP },
@@ -30,32 +40,19 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, currentView, onChange
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled || mobileMenuOpen ? 'bg-brand-white/95 backdrop-blur-sm border-b border-gray-200 py-4' : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 border-b border-transparent ${
+        scrolled ? 'border-gray-100' : ''
+      } ${bgClass}`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <button 
-          onClick={() => onChangeView(ViewState.HOME)} 
-          className="z-50 relative group"
-        >
-          <h1 className={`font-serif text-2xl font-bold tracking-tighter transition-colors ${
-            scrolled || mobileMenuOpen ? 'text-brand-black' : 'text-brand-black lg:text-white'
-          }`}>
-            VULKAN
-            <span className="text-brand-gold">.</span>
-          </h1>
-        </button>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-12">
+        {/* Left Nav (Desktop) */}
+        <nav className="hidden md:flex items-center gap-8 w-1/3">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => onChangeView(link.view)}
-              className={`text-sm uppercase tracking-widest font-medium transition-colors hover:text-brand-gold ${
-                currentView === link.view ? 'text-brand-gold' : (scrolled ? 'text-brand-black' : 'text-white')
+              className={`text-xs uppercase tracking-[0.2em] font-medium transition-colors hover:text-brand-gold ${
+                currentView === link.view ? 'text-brand-gold' : navColorClass
               }`}
             >
               {link.label}
@@ -63,26 +60,37 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, currentView, onChange
           ))}
         </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-6 z-50">
+        {/* Logo (Centered) */}
+        <div className="w-1/3 flex justify-center md:justify-center justify-start">
+          <button 
+            onClick={() => onChangeView(ViewState.HOME)} 
+            className="z-50 relative group"
+          >
+            <h1 className={`font-serif text-2xl md:text-3xl font-bold tracking-tighter transition-colors ${navColorClass}`}>
+              VULKAN
+            </h1>
+          </button>
+        </div>
+
+        {/* Right Actions */}
+        <div className="flex items-center justify-end gap-6 z-50 w-1/3">
           <button 
             onClick={onToggleCart}
-            className={`relative group transition-colors ${
-              scrolled || mobileMenuOpen ? 'text-brand-black' : 'text-brand-black lg:text-white'
-            }`}
+            className={`relative group transition-colors flex items-center gap-2 ${navColorClass}`}
           >
-            <ShoppingCart size={20} strokeWidth={1.5} />
-            {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 w-4 h-4 bg-brand-gold text-white text-[10px] flex items-center justify-center rounded-full">
-                {totalItems}
-              </span>
-            )}
+            <span className="hidden md:inline text-xs uppercase tracking-widest font-medium">Cart</span>
+            <div className="relative">
+              <ShoppingCart size={18} strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 w-4 h-4 bg-brand-gold text-white text-[9px] flex items-center justify-center rounded-full">
+                  {totalItems}
+                </span>
+              )}
+            </div>
           </button>
           
           <button 
-            className={`md:hidden transition-colors ${
-              scrolled || mobileMenuOpen ? 'text-brand-black' : 'text-white'
-            }`}
+            className={`md:hidden transition-colors ${navColorClass}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -92,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, currentView, onChange
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-brand-white z-40 flex flex-col items-center justify-center gap-8 md:hidden">
+        <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 md:hidden animate-in fade-in duration-200">
           {navLinks.map((link) => (
             <button
               key={link.label}
@@ -100,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, currentView, onChange
                 onChangeView(link.view);
                 setMobileMenuOpen(false);
               }}
-              className="text-2xl font-serif text-brand-black hover:text-brand-gold transition-colors"
+              className="text-3xl font-serif text-brand-black hover:text-brand-gold transition-colors"
             >
               {link.label}
             </button>

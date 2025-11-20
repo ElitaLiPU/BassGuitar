@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'Bass' | 'Preamp' | 'Accessory';
+  category: 'Bass' | 'Preamp' | 'Accessory' | 'Effects';
   price: number;
   description: string;
   features: string[];
