@@ -8,7 +8,7 @@ export const ToneConcierge: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "I am Vulkan. How can I assist with your tone today?", timestamp: Date.now() }
+    { role: 'model', text: "I am Lumi. How can I assist with your tone today?", timestamp: Date.now() }
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
