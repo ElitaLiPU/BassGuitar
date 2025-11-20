@@ -25,7 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
             disabled={!product.inStock}
             className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg"
           >
-            {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+            {product.inStock ? 'Add to Signal Chain' : 'Out of Stock'}
           </Button>
         </div>
         
