@@ -185,13 +185,13 @@ const App: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-light">
             <p>
-              <strong className="font-medium text-brand-black">Vulkan Audio</strong> exists in the space between vintage soul and modern reliability. We got tired of "good enough" tone. We got tired of gear that failed on the road.
+              <strong className="font-medium text-brand-black">Luminoso Audio</strong> exists in the space between vintage soul and modern reliability. We got tired of "good enough" tone. We got tired of gear that failed on the road.
             </p>
             <p>
               Our workshop is small by design. We don't have an assembly line. We have workbenches. We have soldering irons. We have oscilloscopes.
             </p>
             <p>
-              When you order a Vulkan preamp or bass, you aren't just buying a product; you are commissioning a piece of musical equipment built specifically to help you find your voice.
+              When you order a Luminoso preamp or bass, you aren't just buying a product; you are commissioning a piece of musical equipment built specifically to help you find your voice.
             </p>
           </div>
           <div className="relative aspect-[4/5] bg-gray-100">
@@ -230,12 +230,12 @@ const App: React.FC = () => {
       <footer className="bg-brand-black text-white py-24 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
           <div className="space-y-8 max-w-xs">
-            <h2 className="font-serif text-3xl tracking-tight">VULKAN.</h2>
+            <h2 className="font-serif text-3xl tracking-tight">Luminoso.</h2>
             <p className="text-gray-500 text-sm leading-relaxed">
               Handcrafted tube amplification and instruments for the discerning musician.
             </p>
             <p className="text-gray-600 text-xs">
-              © 2025 Vulkan Audio. All rights reserved.
+              © 2025 Luminoso Audio. All rights reserved.
             </p>
           </div>
           
